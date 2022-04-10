@@ -16,42 +16,42 @@
 .section .text
 	.globl _start
 _start:
-	//Xuat man hinh "So co 3 chu so: "
+	#Xuat man hinh "So co 3 chu so: "
 	movl $4, %eax
 	movl $1, %ebx
 	movl $str, %ecx
 	movl $16, %edx
 	int $0x80
 	
-	//Nhap 
+	#Nhap 
 	movl $3, %eax
 	movl $0, %ebx
 	movl $num, %ecx
 	movl $4, %edx
 	int $0x80
 	
-	//Lay chu so dau tien
+	#Lay chu so dau tien
 	xorl %eax, %eax #Empty thanh ghi
 	movl $num, %eax
 	xorb %bl, %bl
 	movb (%eax), %bl #Lay ky tu dau tien
 	int $0x80
 	
-	//Lay chu so thu 2
+	#Lay chu so thu 2
 	xorl %eax, %eax
 	movl $num, %eax
 	xorb %cl ,%cl 
 	movb 1(%eax), %cl #Lay ky tu thu hai 
 	int $0x80
 	
-	//Lay chu so thu 3
+	#Lay chu so thu 3
 	xorl %eax, %eax
 	movl $num, %eax
 	xorb %dl, %dl
 	movb 2(%eax), %dl #Lay ky tu thu ba 
 	int $0x80
 	
-	//So sanh
+	#So sanh
 	cmpb %cl, %bl #So sanh ki tu 1(bl) va ki tu 2(cl)
 	jl .L1 # a(bl) < b(cl), nhay toi .L1
 	cmpb %cl, %bl 
@@ -76,7 +76,7 @@ _start:
 	jg .dec ##b(cl) > c(dl) thi nhay toi .dec
 	jmp .equal #Nhay toi .equal
 
-//Xuat "Khong tang dan"
+#Xuat "Khong tang dan"
 .dec: 
 	movl $4, %eax
 	movl $1, %ebx
@@ -85,7 +85,7 @@ _start:
 	int $0x80
 	jmp .L0 #nhay toi exit
 
-//Xuat "Bang nhau"
+#Xuat "Bang nhau"
 .equal:
 	movl $4, %eax
 	movl $1, %ebx
@@ -94,7 +94,7 @@ _start:
 	int $0x80
 	jmp .L0
 	
-//Xuat "Tang dan"
+#Xuat "Tang dan"
 .inc:
 	movl $4, %eax
 	movl $1, %ebx
@@ -103,7 +103,7 @@ _start:
 	int $0x80
 	jmp .L0 #nhay toi exit
 
-//Xuat enter va thoat chuong trinh
+#Xuat enter va thoat chuong trinh
 .L0:
 	#xuong dong
 	movl $4, %eax
